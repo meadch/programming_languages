@@ -10,11 +10,11 @@ fun is_older (date_a : date, date_b : date) =
        If the two dates are the same, the result is `false`. 
      *)
     let 
-        fun test_in_order (fns : ((date * date) -> bool) list) =
-            if null fns then false else hd(fns)(date_a, date_b) orelse test_in_order(tl(fns))
-        fun make_is_older (f: (date) -> int) = fn (a: date, b: date) => f(a) < f(b)
+       fun make_is_older (f: (date) -> int) = fn (a: date, b: date) => f(a) < f(b)
+       fun test_in_order (fns : ((date) -> int) list) =
+            if null fns then false else make_is_older(hd(fns))(date_a, date_b) orelse test_in_order(tl(fns))
     in
-        test_in_order([make_is_older(year), make_is_older(month), make_is_older(day)])
+        test_in_order([year, month, day])
     end
 
 fun number_in_month (date : (int * int * int) list, month_num : int) =
