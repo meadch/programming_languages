@@ -49,3 +49,9 @@ fun dates_in_month (dates: date list, m: int) =
     (* takes a list of dates and a month (i.e., an int) and returns a
 list holding the dates from the argument list of dates that are in the month. *)
     filter_dates(dates, fn (date: date) => month(date) = m)
+
+fun dates_in_months (dates: date list, months: int list) =
+    (* dates_in_months takes a list of dates and a list of months (i.e., an int list) and returns a list holding the dates from the argument list of dates that are in any of the months in the list of months. *)
+    if null months
+    then []
+    else dates_in_month(dates, hd(months))@dates_in_months(dates, tl(months))
