@@ -17,6 +17,15 @@ fun is_older (date_a : date, date_b : date) =
         test_in_order([year, month, day])
     end
 
-fun number_in_month (date : (int * int * int) list, month_num : int) =
+fun number_in_month (dates : date list, month_num : int) =
     (*  takes a list of dates and a month and returns how many dates in the list are in the given month.*)
-    true
+    let fun count_month(dates: date list, count : int) = 
+            if null dates 
+            then count
+            else
+                if month(hd(dates)) = month_num 
+                then count_month(tl(dates), count + 1) 
+                else count_month(tl(dates), count)
+    in
+        count_month(dates, 0)
+    end
