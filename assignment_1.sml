@@ -29,3 +29,23 @@ fun number_in_month (dates : date list, month_num : int) =
     in
         count_month(dates, 0)
     end
+
+fun number_in_months (dates : date list, months : int list) = 
+    (* takes a list of dates and a list of months (i.e., an int list) and returns the number of dates in the list of dates that are in any of the months in the list of months. *)
+    let fun count_months(months: int list, count: int) = 
+            if null months 
+            then count 
+            else count_months(tl(months), count + number_in_month(dates, hd(months)))
+    in
+        count_months(months, 0)
+    end
+
+fun filter_dates (dates: date list, f: (date) -> bool) =
+    if null dates
+    then []
+    else if f(hd(dates)) then hd(dates)::filter_dates(tl(dates), f) else filter_dates(tl(dates), f)
+
+fun dates_in_month (dates: date list, m: int) =
+    (* takes a list of dates and a month (i.e., an int) and returns a
+list holding the dates from the argument list of dates that are in the month. *)
+    filter_dates(dates, fn (date: date) => month(date) = m)
