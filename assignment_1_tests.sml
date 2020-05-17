@@ -40,3 +40,7 @@ val get_nth_test_1 = get_nth(strings, 0) = "Sully"
 val get_nth_test_2 = get_nth(strings, 1) = "Janel"
 val get_nth_test_3 = get_nth(strings, 2) = "Hank"
 val get_nth_test_4 = get_nth(strings, 3) = "Dan"
+
+(* date_to_string *)
+val date_to_string_test_1 = date_to_string((2020, 1, 1)) = "January 1, 2020"
+val date_to_string_test_2 = date_to_string((2017, 12, 4)) = "December 4, 2017"

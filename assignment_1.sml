@@ -3,6 +3,7 @@ type date = (int * int * int)
 fun year (d : date) = #1(d)
 fun month (d : date) = #2(d)
 fun day (d : date) = #3(d)
+val month_strings = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
 
 fun is_older (date_a : date, date_b : date) =
     (* 
@@ -59,3 +60,6 @@ fun dates_in_months (dates: date list, months: int list) =
 fun get_nth (strings: string list, n: int) = 
     if n = 0 then hd(strings) else get_nth(tl(strings), n - 1)
     
+fun date_to_string(date: date) = 
+    (* takes a date and returns a string of the form January 20, 2013 *)
+    get_nth(month_strings, month(date) - 1)^" "^Int.toString(day(date))^", "^Int.toString(year(date))
