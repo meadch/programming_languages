@@ -44,3 +44,9 @@ val get_nth_test_4 = get_nth(strings, 3) = "Dan"
 (* date_to_string *)
 val date_to_string_test_1 = date_to_string((2020, 1, 1)) = "January 1, 2020"
 val date_to_string_test_2 = date_to_string((2017, 12, 4)) = "December 4, 2017"
+
+(* number_before_reaching_sum *)
+val number_before_reaching_sum_test_1 = number_before_reaching_sum(5, [1,2,3,4,5]) = 2
+val number_before_reaching_sum_test_2 = number_before_reaching_sum(1, [1,2,3,4,5]) = 0
+val number_before_reaching_sum_test_3 = number_before_reaching_sum(12, [1,2,3,4,5]) = 4
+val number_before_reaching_sum_test_4 = number_before_reaching_sum(7, [1,2,3,4,5]) = 3

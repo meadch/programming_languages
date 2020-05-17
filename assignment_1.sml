@@ -63,3 +63,12 @@ fun get_nth (strings: string list, n: int) =
 fun date_to_string(date: date) = 
     (* takes a date and returns a string of the form January 20, 2013 *)
     get_nth(month_strings, month(date) - 1)^" "^Int.toString(day(date))^", "^Int.toString(year(date))
+
+
+fun number_before_reaching_sum (sum: int, xs: int list) = 
+    (*  return an int n such that the first n elements of the list add to less than sum, but the first n + 1 elements of the list add to sum or more *)
+    let fun sum_until(s: int, i: int, xs: int list) =
+            if s >= sum then i - 1 else sum_until(s + hd(xs), i + 1, tl(xs))
+    in
+        sum_until(0, 0, xs)
+    end
