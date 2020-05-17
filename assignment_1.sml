@@ -8,6 +8,24 @@ fun append (xs : int list, ys : int list) = (* part of the course logo :) *)
     if null xs
     then ys
     else hd(xs) :: append(tl(xs), ys)
+fun leap_year(y: int) = 
+            (y mod 400 = 0) orelse ((y mod 4 = 0) andalso not((y mod 100 = 0)))
+fun days_in_month_for(year: int) =
+    [
+            31, (* January *)
+            if leap_year(year) then 29 else 28, (* February *)
+            31, (* March *)
+            30, (* April *)
+            31, (* May *)
+            30, (* June *)
+            31, (* July *)
+            31, (* August *)
+            30, (* September *)
+            31, (* October *)
+            31, (* November *)
+            31 (* December *)
+    ]
+    
 
 fun is_older (date_a : date, date_b : date) =
     (* 
@@ -72,6 +90,8 @@ fun dates_in_months (dates: date list, months: int list) =
 
 fun get_nth (strings: string list, n: int) = 
     if n = 0 then hd(strings) else get_nth(tl(strings), n - 1)
+fun get_nth_ints (xs: int list, n: int) = 
+    if n = 0 then hd(xs) else get_nth_ints(tl(xs), n - 1)
     
 fun date_to_string(date: date) = 
     (* takes a date and returns a string of the form January 20, 2013 *)
@@ -152,3 +172,12 @@ fun number_in_months_challenge(dates : date list, months : int list) =
 
 fun dates_in_months_challenge(dates : date list, months : int list) = 
     dates_in_months(dates, uniq(months))
+
+fun reasonable_date(date: date) =
+    let
+        fun valid_year(y: int) = y > 0
+        fun valid_month(m: int) = m > 0 andalso m < 13
+        fun valid_day(d: int) = d > 0 andalso d <= get_nth_ints(days_in_month_for(year(date)), month(date) - 1)
+    in
+        valid_year(year(date)) andalso valid_month(month(date)) andalso valid_day(day(date))
+    end

@@ -81,3 +81,12 @@ val number_in_months_challenge_test_4 = number_in_months_challenge(date_list, [1
 val dates_in_months_challenge_test_1 = dates_in_months_challenge(date_list, [1, 5, 1, 5]) = [(2020, 1, 1), (2020, 1, 2), (2019, 1, 3), (2018, 5, 13)]
 val dates_in_months_challenge_test_2 = dates_in_months_challenge(date_list, [2, 5, 2, 2]) = [(2020, 2, 1), (2018, 5, 13)]
 val dates_in_months_challenge_test_3 = dates_in_months_challenge(date_list, [2, 6, 6, 2]) = [(2020, 2, 1)]
+
+(* reasonable_date *)
+val reasonable_date_test_1 = reasonable_date((0, 0, 0)) = false
+val reasonable_date_test_2 = reasonable_date((2000, 13, 5)) = false
+val reasonable_date_test_3 = reasonable_date((2000, 1, 50)) = false
+
+(* leap years *)
+val reasonable_date_test_4 = reasonable_date((2000, 2, 29)) = true
+val reasonable_date_test_5 = reasonable_date((2001, 2, 29)) = false
