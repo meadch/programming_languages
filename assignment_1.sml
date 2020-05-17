@@ -22,7 +22,7 @@ fun days_in_month_for(year: int) =
             31, (* August *)
             30, (* September *)
             31, (* October *)
-            31, (* November *)
+            30, (* November *)
             31 (* December *)
     ]
     
@@ -119,7 +119,7 @@ fun what_month (day_num: int) =
             31, (* August *)
             30, (* September *)
             31, (* October *)
-            31, (* November *)
+            30, (* November *)
             31 (* December *)
         ]
     in number_before_reaching_sum(day_num, days_in_months) + 1 end
