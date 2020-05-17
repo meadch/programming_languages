@@ -33,3 +33,10 @@ val dates_in_month_test_3 = dates_in_month(date_list, 6) = []
 val dates_in_months_test_1 = dates_in_months(date_list, [1, 5]) = [(2020, 1, 1), (2020, 1, 2), (2019, 1, 3), (2018, 5, 13)]
 val dates_in_months_test_2 = dates_in_months(date_list, [2, 5]) = [(2020, 2, 1), (2018, 5, 13)]
 val dates_in_months_test_3 = dates_in_months(date_list, [2, 6]) = [(2020, 2, 1)]
+
+(* get_nth *)
+val strings = ["Sully", "Janel", "Hank", "Dan"]
+val get_nth_test_1 = get_nth(strings, 0) = "Sully"
+val get_nth_test_2 = get_nth(strings, 1) = "Janel"
+val get_nth_test_3 = get_nth(strings, 2) = "Hank"
+val get_nth_test_4 = get_nth(strings, 3) = "Dan"
