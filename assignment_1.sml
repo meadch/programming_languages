@@ -72,3 +72,21 @@ fun number_before_reaching_sum (sum: int, xs: int list) =
     in
         sum_until(0, 0, xs)
     end
+
+fun what_month (day_num: int) =
+    (* takes a day of year (i.e., an int between 1 and 365) and returns what month that day is in *)
+    let val days_in_months = [
+            31, (* January *)
+            28, (* February *)
+            31, (* March *)
+            30, (* April *)
+            31, (* May *)
+            30, (* June *)
+            31, (* July *)
+            31, (* August *)
+            30, (* September *)
+            31, (* October *)
+            31, (* November *)
+            31 (* December *)
+        ]
+    in number_before_reaching_sum(day_num, days_in_months) + 1 end

@@ -50,3 +50,11 @@ val number_before_reaching_sum_test_1 = number_before_reaching_sum(5, [1,2,3,4,5
 val number_before_reaching_sum_test_2 = number_before_reaching_sum(1, [1,2,3,4,5]) = 0
 val number_before_reaching_sum_test_3 = number_before_reaching_sum(12, [1,2,3,4,5]) = 4
 val number_before_reaching_sum_test_4 = number_before_reaching_sum(7, [1,2,3,4,5]) = 3
+
+(* what_month *)
+val what_month_test_1 = what_month(31) = 1
+val what_month_test_2 = what_month(32) = 2
+val what_month_test_3 = what_month(59) = 2
+val what_month_test_4 = what_month(60) = 3
+val what_month_test_5 = what_month(90) = 3
+val what_month_test_6 = what_month(91) = 4
