@@ -9,6 +9,7 @@ val is_older_test4 = (is_older((2020, 1, 1), (2020, 1, 2)) = true)
 val is_older_test5 = (is_older((2020, 2, 1), (2020, 1, 1)) = false)
 val is_older_test6 = (is_older((2020, 1, 1), (2020, 2, 1)) = true)
 val is_older_test7 = (is_older((2020, 1, 1), (2020, 1, 1)) = false)
+val is_older_test8 = (is_older((2020, 1, 1), (2018, 5, 13)) = false)
 
 (* number_in_month *)
 
@@ -64,3 +65,8 @@ val month_range_test_1 = month_range(31, 32) = [1, 2]
 val month_range_test_2 = month_range(2, 1) = []
 val month_range_test_3 = month_range(364, 365) = [12, 12]
 val month_range_test_4 = month_range(29, 33) = [1, 1, 1, 2, 2]
+
+(* oldest *)
+val oldest_test_1 = oldest(date_list) = SOME(2018, 5, 13)
+val oldest_test_2 = oldest([]) = NONE
+val oldest_test_3 = oldest([(2020, 1, 1)]) = SOME((2020, 1, 1))

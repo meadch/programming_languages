@@ -13,7 +13,16 @@ fun is_older (date_a : date, date_b : date) =
     let 
        fun make_is_older (f: (date) -> int) = fn (a: date, b: date) => f(a) < f(b)
        fun test_in_order (fns : ((date) -> int) list) =
-            if null fns then false else make_is_older(hd(fns))(date_a, date_b) orelse test_in_order(tl(fns))
+            if null fns 
+            then false 
+            else 
+                let 
+                    val f = hd(fns)
+                in
+                    make_is_older(f)(date_a, date_b)
+                    orelse
+                    (f(date_a) = f(date_b) andalso test_in_order(tl(fns)))
+                end
     in
         test_in_order([year, month, day])
     end
@@ -94,3 +103,24 @@ fun what_month (day_num: int) =
 fun month_range(day1: int, day2: int) =
     (* takes two days of the year day1 and day2 and returns an int list [m1,m2,...,mn] where m1 is the month of day1, m2 is the month of day1+1, ..., and mn is the month of day day2 *)
     if day1 > day2 then [] else what_month(day1)::month_range(day1 + 1, day2)
+
+fun oldest(dates: date list) =
+    (*takes a list of dates and evaluates to an (int*int*int) option. It evaluates to NONE if the list has no dates and SOME d if the date d is the oldest date in the list*)
+    if null dates 
+    then NONE
+    else
+    let 
+        val first = hd(dates) 
+        val rest = tl(dates)
+    in
+        if null(rest) 
+        then SOME(first)
+        else 
+            let 
+                val second = hd(rest)
+            in
+                if is_older(first, second) 
+                then oldest(first::tl(rest))
+                else oldest(rest)
+            end 
+    end
