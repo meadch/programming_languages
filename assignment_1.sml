@@ -4,6 +4,10 @@ fun year (d : date) = #1(d)
 fun month (d : date) = #2(d)
 fun day (d : date) = #3(d)
 val month_strings = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+fun append (xs : int list, ys : int list) = (* part of the course logo :) *)
+    if null xs
+    then ys
+    else hd(xs) :: append(tl(xs), ys)
 
 fun is_older (date_a : date, date_b : date) =
     (* 
@@ -124,3 +128,27 @@ fun oldest(dates: date list) =
                 else oldest(rest)
             end 
     end
+
+fun includes(xs: int list, x: int) =
+    if null xs
+    then false
+    else hd(xs) = x orelse includes(tl(xs), x)
+
+fun uniq(xs: int list) =
+    let 
+        fun recurse(orig: int list, result: int list) =
+            if null orig
+            then result
+            else 
+                if includes(result, hd(orig))
+                then recurse(tl(orig), result)
+                else recurse(tl(orig), append(result, [hd(orig)]))
+    in
+        recurse(xs, [])
+    end
+
+fun number_in_months_challenge(dates : date list, months : int list) = 
+    number_in_months(dates, uniq(months))
+
+fun dates_in_months_challenge(dates : date list, months : int list) = 
+    dates_in_months(dates, uniq(months))

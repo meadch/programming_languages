@@ -70,3 +70,14 @@ val month_range_test_4 = month_range(29, 33) = [1, 1, 1, 2, 2]
 val oldest_test_1 = oldest(date_list) = SOME(2018, 5, 13)
 val oldest_test_2 = oldest([]) = NONE
 val oldest_test_3 = oldest([(2020, 1, 1)]) = SOME((2020, 1, 1))
+
+(* number_in_months_challenge *)
+val number_in_months_challenge_test_1 = number_in_months_challenge(date_list, [1, 2, 1]) = 4
+val number_in_months_challenge_test_2 = number_in_months_challenge(date_list, [2, 2, 5]) = 2
+val number_in_months_challenge_test_3 = number_in_months_challenge(date_list, [5, 7, 7, 5]) = 1
+val number_in_months_challenge_test_4 = number_in_months_challenge(date_list, [13, 13, 13]) = 0
+
+(* dates_in_months_challenge *)
+val dates_in_months_challenge_test_1 = dates_in_months_challenge(date_list, [1, 5, 1, 5]) = [(2020, 1, 1), (2020, 1, 2), (2019, 1, 3), (2018, 5, 13)]
+val dates_in_months_challenge_test_2 = dates_in_months_challenge(date_list, [2, 5, 2, 2]) = [(2020, 2, 1), (2018, 5, 13)]
+val dates_in_months_challenge_test_3 = dates_in_months_challenge(date_list, [2, 6, 6, 2]) = [(2020, 2, 1)]
