@@ -58,3 +58,9 @@ val what_month_test_3 = what_month(59) = 2
 val what_month_test_4 = what_month(60) = 3
 val what_month_test_5 = what_month(90) = 3
 val what_month_test_6 = what_month(91) = 4
+
+(* month_range *)
+val month_range_test_1 = month_range(31, 32) = [1, 2]
+val month_range_test_2 = month_range(2, 1) = []
+val month_range_test_3 = month_range(364, 365) = [12, 12]
+val month_range_test_4 = month_range(29, 33) = [1, 1, 1, 2, 2]
