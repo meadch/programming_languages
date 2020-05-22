@@ -88,10 +88,8 @@ fun dates_in_months (dates: date list, months: int list) =
     then []
     else dates_in_month(dates, hd(months))@dates_in_months(dates, tl(months))
 
-fun get_nth (strings: string list, n: int) = 
-    if n = 1 then hd(strings) else get_nth(tl(strings), n - 1)
-fun get_nth_ints (xs: int list, n: int) = 
-    if n = 1 then hd(xs) else get_nth_ints(tl(xs), n - 1)
+fun get_nth (xs, n: int) = 
+    if n = 1 then hd(xs) else get_nth(tl(xs), n - 1)
     
 fun date_to_string(date: date) = 
     (* takes a date and returns a string of the form January 20, 2013 *)
@@ -177,7 +175,7 @@ fun reasonable_date(date: date) =
     let
         fun valid_year(y: int) = y > 0
         fun valid_month(m: int) = m > 0 andalso m < 13
-        fun valid_day(d: int) = d > 0 andalso d <= get_nth_ints(days_in_month_for(year(date)), month(date))
+        fun valid_day(d: int) = d > 0 andalso d <= get_nth(days_in_month_for(year(date)), month(date))
     in
         valid_year(year(date)) andalso valid_month(month(date)) andalso valid_day(day(date))
     end
