@@ -95,4 +95,15 @@ fun remove_card (cs, c, e) =
         then raise IllegalMove
         else all_except(cs)
     end
-    
+
+(* (d) Write a function all_same_color, which takes a list of cards and returns true if all the cards in the list are the same color. Hint: An elegant solution is very similar to one of the functions using nested pattern-matching in the lectures. *)
+
+fun all_same_color cs = 
+    let
+        fun share_color (c1, c2) = card_color(c1) = card_color(c2)
+    in
+        case cs of
+            [] => true
+            | c::[] => true
+            | c::c'::rest => share_color(c, c') andalso all_same_color(c'::rest)
+    end
