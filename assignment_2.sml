@@ -21,3 +21,14 @@ fun all_except_option(x, xs) =
     if some(xs, fn (y) => same_string(x, y))
     then SOME(filter(xs, fn (y) => not(same_string(x, y))))
     else NONE
+
+(* (b) Write a function get_substitutions1, which takes a string list list (a list of list of strings, the substitutions) and a string s and returns a string list. The result has all the strings that are in some list in substitutions that also has s, but s itself should not be in the result. *)
+
+(* val get_substitutions1 = fn : string list list * string -> string list *)
+fun get_substitutions1(substitutions, s) =
+    case substitutions of
+        [] => []
+        | xs::rest => case all_except_option(s, xs) of
+                                NONE => get_substitutions1(rest, s)
+                                | SOME(filtered) => filtered @ get_substitutions1(rest, s)
+
