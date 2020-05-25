@@ -75,3 +75,10 @@ fun card_color (suit, _) =
         | Spades   => Black
         | Diamonds => Red
         | Hearts   => Red
+
+(* Write a function card_value, which takes a card and returns its value (numbered cards have their number as the value, aces are 11, everything else is 10). Note: One case-expression is enough. *)
+fun card_value (_, rank) =
+    case (rank) of
+          Num(i)  => i
+        | Ace     => 11
+        | _       => 10 (* Handles Jack, Queen, King *)

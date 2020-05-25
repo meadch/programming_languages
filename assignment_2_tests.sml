@@ -16,3 +16,10 @@ val card_color_test1 = card_color (Clubs, Num 2) = Black
 val card_color_test2 = card_color (Diamonds, Num 6) = Red
 val card_color_test3 = card_color (Hearts, Num 8) = Red
 val card_color_test4 = card_color (Spades, Num 9) = Black
+
+val card_value_test1 = card_value (Clubs, Num 2) = 2
+val card_value_test2 = card_value (Diamonds, Num 6) = 6
+val card_value_test3 = card_value (Hearts, Jack) = 10
+val card_value_test4 = card_value (Spades, Queen) = 10
+val card_value_test5 = card_value (Spades, King) = 10
+val card_value_test6 = card_value (Spades, Ace) = 11
