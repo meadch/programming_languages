@@ -119,3 +119,17 @@ fun sum_cards cs =
     in
         aux(cs, 0)
     end
+
+(* (f) Write a function score, which takes a card list (the held-cards) and an int (the goal) and computes the score. *)
+
+(* Scoring works as follows: Let sum be the sum of the values of the held-cards. If sum is greater than goal, the preliminary score is three times (sum−goal), else the preliminary score is (goal − sum. The score is the preliminary score unless all the held-cards are the same color, in which case the score is the preliminary score divided by 2 (and rounded down as usual with integer division; use ML’s div operator). *)
+
+fun score (cs, goal) =
+    let
+        val sum = sum_cards(cs)
+        val preliminary = if sum > goal 
+                          then 3 * (sum - goal) 
+                          else (goal - sum)
+    in
+        if all_same_color(cs) then preliminary div 2 else preliminary
+    end
