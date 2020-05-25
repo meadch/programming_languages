@@ -18,6 +18,16 @@ fun map (xs, f) =
          [] => []
         |x::xs' => f(x)::map(xs', f)
 
+(* types *)
+datatype suit = Clubs | Diamonds | Hearts | Spades
+datatype rank = Jack | Queen | King | Ace | Num of int 
+type card = suit * rank
+datatype color = Red | Black
+datatype move = Discard of card | Draw 
+
+(* Exceptions *)
+exception IllegalMove
+
 (* 1. This problem involves using first-name substitutions to come up with alternate names. For example, Fredrick William Smith could also be Fred William Smith or Freddie William Smith. Only part (d) is specifically about this, but the other problems are helpful. *)
 
 (* (a) Write a function all_except_option, which takes a string and a string list. Return NONE if the string is not in the list, else return SOME lst where lst is identical to the argument list except the string is not in it. You may assume the string is in the list at most once. Use same_string, provided to you, to compare strings. Sample solution is around 8 lines. *)
@@ -56,3 +66,12 @@ fun similar_names (args) =
         ([],fullname) => [fullname]
         | (substitutions, { first=f, middle=m, last=l }) => 
             { first=f, middle=m, last=l }::map(get_substitutions2(substitutions, f), fn (s) => { first=s, middle=m, last=l })
+
+(* 2. This problem involves a solitaire card game invented just for this question. *)
+(* (a) Write a function card_color, which takes a card and returns its color (spades and clubs are black, diamonds and hearts are red). Note: One case-expression is enough. *)
+fun card_color (suit, _) =
+    case (suit) of
+          Clubs    => Black
+        | Spades   => Black
+        | Diamonds => Red
+        | Hearts   => Red

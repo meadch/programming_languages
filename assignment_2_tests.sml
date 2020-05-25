@@ -11,3 +11,8 @@ val get_substitutions2_test1 = get_substitutions2([["Fred","Fredrick"],["Elizabe
 val get_substitutions2_test2 = get_substitutions2([["Fred","Fredrick"],["Jeff","Jeffrey"],["Geoff","Jeff","Jeffrey"]], "Jeff") = ["Jeffrey","Geoff","Jeffrey"]
 
 val similar_names_test1 = similar_names([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]], {first="Fred", middle="W", last="Smith"}) = [{first="Fred", last="Smith", middle="W"}, {first="Fredrick", last="Smith", middle="W"}, {first="Freddie", last="Smith", middle="W"}, {first="F", last="Smith", middle="W"}]
+
+val card_color_test1 = card_color (Clubs, Num 2) = Black
+val card_color_test2 = card_color (Diamonds, Num 6) = Red
+val card_color_test3 = card_color (Hearts, Num 8) = Red
+val card_color_test4 = card_color (Spades, Num 9) = Black
