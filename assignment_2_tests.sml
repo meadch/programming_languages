@@ -39,3 +39,7 @@ val sum_cards_test3 = sum_cards [(Clubs, Num 2),(Clubs, Jack)] = 12
 val score_test1 = score ([(Hearts, Num 2),(Clubs, Num 4)],10) = 4
 val score_test2 = score ([(Hearts, Num 4),(Clubs, Num 4)], 3) = 15
 val score_test3 = score ([(Hearts, Num 4),(Hearts, Num 4)], 3) = 7
+
+val officiate_test1 = officiate ([(Hearts, Num 2),(Clubs, Num 4)],[Draw], 15) = 6
+val officiate_test2 = officiate ([(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)], [Draw,Draw,Draw,Draw,Draw], 42) = 3
+val officiate_test3 = ((officiate([(Clubs,Jack),(Spades,Num(8))], [Draw,Discard(Hearts,Jack)], 42); false)  handle IllegalMove => true) 

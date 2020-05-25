@@ -133,3 +133,30 @@ fun score (cs, goal) =
     in
         if all_same_color(cs) then preliminary div 2 else preliminary
     end
+
+(* (g) Write a function officiate, which “runs a game.” It takes a card list (the card-list) a move list (what the player “does” at each point), and an int (the goal) and returns the score at the end of the game after processing (some or all of) the moves in the move list in order. Use a locally defined recursive helper function that takes several arguments that together represent the current state of the game. As described above: *)
+
+(* 
+• The game starts with the held-cards being the empty list.
+• The game ends if there are no more moves. (The player chose to stop since the move list is empty.)
+• If the player discards some card c, play continues (i.e., make a recursive call) with the held-cards not having c and the card-list unchanged. If c is not in the held-cards, raise the IllegalMove exception.
+• If the player draws and the card-list is (already) empty, the game is over. Else if drawing causes the sum of the held-cards to exceed the goal, the game is over (after drawing). Else play continues with a larger held-cards and a smaller card-list. 
+*)
+
+fun officiate (cs, mvs, goal) =
+    let
+        fun aux (game_state) =
+          case game_state of 
+              (_, [], held_cards)                  => score(held_cards, goal)
+            | (cs, Discard(c)::mvs, held_cards)    => aux(cs, mvs, remove_card(held_cards, c, IllegalMove))
+            | ([], Draw::mvs, held_cards)          => score(held_cards, goal)
+            | (drawn::cs', Draw::mvs, held_cards)  => let
+                                                        val updated_hand = drawn::held_cards
+                                                      in
+                                                        if sum_cards(updated_hand) > goal
+                                                        then score(updated_hand, goal)
+                                                        else aux(cs', mvs, updated_hand)
+                                                      end
+    in
+        aux(cs, mvs, [])
+    end
