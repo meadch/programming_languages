@@ -32,3 +32,17 @@ fun get_substitutions1(substitutions, s) =
                                 NONE => get_substitutions1(rest, s)
                                 | SOME(filtered) => filtered @ get_substitutions1(rest, s)
 
+(* (c) Write a function get_substitutions2, which is like get_substitutions1 except it uses a tail-recursive local helper function. *)
+
+(* val get_substitutions2 = fn : string list list * string -> string list *)
+fun get_substitutions2(substitutions, s) =
+    let 
+        fun aux(substitutions, result) = 
+            case substitutions of
+                [] => result
+                | xs::rest => case all_except_option(s, xs) of
+                      NONE => aux(rest, result)
+                    | SOME(filtered) => aux(rest, result @ filtered)
+    in
+        aux(substitutions, [])
+    end
