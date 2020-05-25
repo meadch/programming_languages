@@ -23,3 +23,7 @@ val card_value_test3 = card_value (Hearts, Jack) = 10
 val card_value_test4 = card_value (Spades, Queen) = 10
 val card_value_test5 = card_value (Spades, King) = 10
 val card_value_test6 = card_value (Spades, Ace) = 11
+
+val remove_card_test1 = remove_card ([(Hearts, Ace)], (Hearts, Ace), IllegalMove) = []
+val remove_card_test2 = remove_card ([(Hearts, Ace), (Hearts, Ace)], (Hearts, Ace), IllegalMove) = [(Hearts, Ace)]
+val remove_card_test3 = (remove_card ([(Hearts, Ace)], (Spades, Ace), IllegalMove) handle IllegalMove => []) = []

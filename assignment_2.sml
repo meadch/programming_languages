@@ -82,3 +82,17 @@ fun card_value (_, rank) =
           Num(i)  => i
         | Ace     => 11
         | _       => 10 (* Handles Jack, Queen, King *)
+
+(* Write a function remove_card, which takes a list of cards cs, a card c, and an exception e. It returns a list that has all the elements of cs except c. If c is in the list more than once, remove only the first one. If c is not in the list, raise the exception e. You can compare cards with =. *)
+fun remove_card (cs, c, e) =
+    let 
+        fun all_except(cs) =
+            case cs of 
+                  [] => []
+                | c'::rem => if c' = c then rem else c'::all_except(rem)
+    in
+        if not(some(cs, fn (c') => c = c'))
+        then raise IllegalMove
+        else all_except(cs)
+    end
+    
