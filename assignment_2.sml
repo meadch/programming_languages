@@ -88,7 +88,7 @@ fun remove_card (cs, c, e) =
     let 
         fun all_except(cs) =
             case cs of 
-                  [] => []
+                  []      => []
                 | c'::rem => if c' = c then rem else c'::all_except(rem)
     in
         if not(some(cs, fn (c') => c = c'))
@@ -103,7 +103,19 @@ fun all_same_color cs =
         fun share_color (c1, c2) = card_color(c1) = card_color(c2)
     in
         case cs of
-            [] => true
-            | c::[] => true
+              []          => true
+            | c::[]       => true
             | c::c'::rest => share_color(c, c') andalso all_same_color(c'::rest)
+    end
+
+(* (e) Write a function sum_cards, which takes a list of cards and returns the sum of their values. Use a locally defined helper function that is tail recursive. (Take “calls use a constant amount of stack space” as a requirement for this problem.) *)
+
+fun sum_cards cs =
+    let
+        fun aux(cs, sum) =
+            case cs of
+                  []    => sum
+                | c::rest => aux(rest, sum + card_value(c))
+    in
+        aux(cs, 0)
     end
