@@ -24,9 +24,10 @@ val longest_capitalized_test1 = longest_capitalized ["A","bc","C"] = "A"
 val longest_capitalized_test2 = longest_capitalized ["Ab","Bcd","C"] = "Bcd"
 val longest_capitalized_test3 = longest_capitalized ["a","bc","c"] = ""
 
-(* 
+val rev_string_test1 = rev_string "abc" = "cba"
+val rev_string_test2 = rev_string "a" = "a"
 
-val test5 = longest_capitalized ["A","bc","C"] = "A"
+(* 
 
 val test6 = rev_string "abc" = "cba"
 

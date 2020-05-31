@@ -59,3 +59,6 @@ val longest_string4 = longest_string_helper(fn (a, b) => a >= b)
 (* Write a function longest_capitalized that takes a string list and returns the longest string in the list that begins with an uppercase letter, or "" if there are no such strings. Assume all strings have at least 1 character. Use a val-binding and the ML library’s o operator for composing functions. Resolve ties like in problem 2. *)
 
 val longest_capitalized = longest_string3 o only_capitals
+
+(* Write a function rev_string that takes a string and returns the string that is the same characters in reverse order. Use ML’s o operator, the library function rev for reversing lists, and two library functions in the String module. (Browse the module documentation to find the most useful functions.) *)
+val rev_string = String.implode o List.rev o String.explode
