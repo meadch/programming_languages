@@ -40,3 +40,7 @@ val only_capitals = List.filter(fn (s) => Char.isUpper(String.sub(s, 0)))
  (* Write a function longest_string1 that takes a string list and returns the longest string in the list. If the list is empty, return "". In the case of a tie, return the string closest to the beginning of the list. Use foldl, String.size, and no recursion (other than the implementation of foldl is recursive). *)
 
  val longest_string1 = foldl(fn (s, longest) => if String.size(s) > String.size(longest) then s else longest) ""
+
+ (* Write a function longest_string2 that is exactly like longest_string1 except in the case of ties it returns the string closest to the end of the list. Your solution should be almost an exact copy of `longest_string1`. Still use foldl and String.size. *)
+
+ val longest_string2 = foldl(fn (s, longest) => if String.size(s) >= String.size(longest) then s else longest) ""
