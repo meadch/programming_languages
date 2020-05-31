@@ -34,4 +34,5 @@ datatype typ = Anything
 	     | TupleT of typ list
 	     | Datatype of string
 
-(**** you can put all your code here ****)
+(* Write a function only_capitals that takes a string list and returns a string list that has only the strings in the argument that start with an uppercase letter. Assume all strings have at least 1 character. Use List.filter, Char.isUpper, and String.sub to make a 1-2 line solution. *)
+val only_capitals = List.filter(fn (s) => Char.isUpper(String.sub(s, 0)))
