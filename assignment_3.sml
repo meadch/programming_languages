@@ -55,3 +55,7 @@ fun longest_string_helper f =
     fn lst => foldl(fn (s, result) => if f(String.size(s), String.size(result)) then s else result) "" lst
 val longest_string3 = longest_string_helper(fn (a, b) => a > b)
 val longest_string4 = longest_string_helper(fn (a, b) => a >= b)
+
+(* Write a function longest_capitalized that takes a string list and returns the longest string in the list that begins with an uppercase letter, or "" if there are no such strings. Assume all strings have at least 1 character. Use a val-binding and the ML library’s o operator for composing functions. Resolve ties like in problem 2. *)
+
+val longest_capitalized = longest_string3 o only_capitals

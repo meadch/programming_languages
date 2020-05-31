@@ -20,6 +20,10 @@ val longest_string4_test1 = longest_string4 ["A","bc","C"] = "bc"
 val longest_string4_test2 = longest_string4 [] = ""
 val longest_string4_test3 = longest_string4 ["aa", "bb"] = "bb"
 
+val longest_capitalized_test1 = longest_capitalized ["A","bc","C"] = "A"
+val longest_capitalized_test2 = longest_capitalized ["Ab","Bcd","C"] = "Bcd"
+val longest_capitalized_test3 = longest_capitalized ["a","bc","c"] = ""
+
 (* 
 
 val test5 = longest_capitalized ["A","bc","C"] = "A"
