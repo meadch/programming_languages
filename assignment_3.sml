@@ -36,3 +36,7 @@ datatype typ = Anything
 
 (* Write a function only_capitals that takes a string list and returns a string list that has only the strings in the argument that start with an uppercase letter. Assume all strings have at least 1 character. Use List.filter, Char.isUpper, and String.sub to make a 1-2 line solution. *)
 val only_capitals = List.filter(fn (s) => Char.isUpper(String.sub(s, 0)))
+
+ (* Write a function longest_string1 that takes a string list and returns the longest string in the list. If the list is empty, return "". In the case of a tie, return the string closest to the beginning of the list. Use foldl, String.size, and no recursion (other than the implementation of foldl is recursive). *)
+
+ val longest_string1 = foldl(fn (s, longest) => if String.size(s) > String.size(longest) then s else longest) ""
