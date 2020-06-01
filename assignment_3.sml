@@ -129,3 +129,9 @@ fun match (v, ptn) =
     | (Constructor(i, v), ConstructorP(j, p)) => if i = j then match(v, p) else NONE
     | (Tuple(vals), TupleP(ptns)) => all_answers match (ListPair.zip(vals, ptns))
     | _ => NONE
+
+
+(* Write a function first_match that takes a value and a list of patterns and returns a (string * valu) list option, namely NONE if no pattern in the list matches or SOME lst where lst is the list of bindings for the first pattern in the list that matches. Use first_answer and a handle-expression. Hints: Sample solution is 3 lines. *)
+
+fun first_match (v, ptns) =
+  SOME( first_answer (fn (x) => match(v, x)) ptns ) handle NoAnswer => NONE
