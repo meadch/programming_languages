@@ -30,6 +30,12 @@ val rev_string_test2 = rev_string "a" = "a"
 
 val first_answer_test1 = first_answer (fn x => if x > 3 then SOME x else NONE) [1,2,3,4,5] = 4
 val first_answer_test2 = (first_answer (fn x => if x > 3 then SOME x else NONE) [1,1,1] handle NoAnswer => 0) = 0
+
+
+val all_answers_test1 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [2,3,4,5,6,7] = NONE
+val all_answers_test2 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [] = SOME []
+val all_answers_test3 = all_answers (fn x => if x > 1 then SOME [x] else NONE) [2,3,4] = SOME [2,3,4]
+
 (* 
 val test8 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [2,3,4,5,6,7] = NONE
 
