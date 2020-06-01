@@ -46,10 +46,11 @@ val count_wild_and_variable_lengths_test2a = count_wild_and_variable_lengths (Tu
 val count_some_var_test1a = count_some_var ("toast", (Variable "test")) = 0
 val count_some_var_test2a = count_some_var ("toast", (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))]))) = 2
 
+val check_pat_test1a = check_pat Wildcard = true
+val check_pat_test2a = check_pat (Variable "test") = true
+val check_pat_test3a = check_pat (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))])) = false
+
 (* 
-
-val test10 = check_pat (Variable("x")) = true
-
 val test11 = match (Const(1), UnitP) = NONE
 
 val test12 = first_match Unit [UnitP] = SOME [] *)
