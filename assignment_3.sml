@@ -97,3 +97,5 @@ fun count_wildcards (p) = g (fn () => 1) (fn (x) => 0) p
 fun count_wild_and_variable_lengths (p) = g (fn () => 1) String.size p
 
 (* (c) Use g to define a function count_some_var that takes a string and a pattern (as a pair) and returns the number of times the string appears as a variable in the pattern. We care only about variable names; the constructor names are not relevant. *)
+fun count_some_var (s, p) = 
+    g (fn () => 0) (fn (x) => if x = s then 1 else 0) p
