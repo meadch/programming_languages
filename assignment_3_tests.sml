@@ -36,10 +36,11 @@ val all_answers_test1 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [
 val all_answers_test2 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [] = SOME []
 val all_answers_test3 = all_answers (fn x => if x > 1 then SOME [x] else NONE) [2,3,4] = SOME [2,3,4]
 
-(* 
-val test8 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [2,3,4,5,6,7] = NONE
+val count_wildcards_test1a = count_wildcards Wildcard = 1
+val count_wildcards_test2a = count_wildcards (Variable "test") = 0
+val count_wildcards_test3a = count_wildcards (TupleP([Wildcard, ConstructorP("test", Wildcard)])) = 2
 
-val test9a = count_wildcards Wildcard = 1
+(* 
 
 val test9b = count_wild_and_variable_lengths (Variable("a")) = 1
 
