@@ -29,8 +29,8 @@ val only_capitals = List.filter(fn (s) => Char.isUpper(String.sub(s, 0)))
 
 fun longest_string_helper f = 
     fn lst => foldl(fn (s, result) => if f(String.size(s), String.size(result)) then s else result) "" lst
-val longest_string3 = longest_string_helper(fn (a, b) => a > b)
-val longest_string4 = longest_string_helper(fn (a, b) => a >= b)
+val longest_string3 = longest_string_helper op>
+val longest_string4 = longest_string_helper op>=
 
 (* Write a function longest_capitalized that takes a string list and returns the longest string in the list that begins with an uppercase letter, or "" if there are no such strings. Assume all strings have at least 1 character. Use a val-binding and the ML library’s o operator for composing functions. Resolve ties like in problem 2. *)
 
@@ -41,15 +41,11 @@ val rev_string = String.implode o List.rev o String.explode
 
 (* Write a function first_answer of type (’a -> ’b option) -> ’a list -> ’b (notice the 2 arguments are curried). The first argument should be applied to elements of the second argument in order until the first time it returns SOME v for some v and then v is the result of the call to first_answer. If the first argument returns NONE for all list elements, then first_answer should raise the exception NoAnswer. Hints: Sample solution is 5 lines and does nothing fancy. *)
 fun first_answer (f) = fn (lst) =>
-    let fun aux (lst) =
-        case lst of 
-             []      => raise NoAnswer
-            |x::rest => case f(x) of
-                              SOME x => x
-                            | NONE   => aux(rest)
-        in
-            aux(lst)
-        end
+  case lst of 
+        []      => raise NoAnswer
+      |x::rest => case f(x) of
+                        SOME x => x
+                      | NONE   => first_answer f rest
 
 (* Write a function all_answers of type (’a -> ’b list option) -> ’a list -> ’b list option (notice the 2 arguments are curried). The first argument should be applied to elements of the second argument. If it returns NONE for any element, then the result for all_answers is NONE. Else the calls to the first argument will have produced SOME lst1, SOME lst2, ... SOME lstn and the result of all_answers is SOME lst where lst is lst1, lst2, ..., lstn appended together (order doesn’t matter). Hints: The sample solution is 8 lines. It uses a helper function with an accumulator and uses @. Note all_answers f [] should evaluate to SOME []. *)
 fun all_answers (f) = fn (lst) =>
@@ -133,5 +129,5 @@ fun match (v, ptn) =
 
 (* Write a function first_match that takes a value and a list of patterns and returns a (string * valu) list option, namely NONE if no pattern in the list matches or SOME lst where lst is the list of bindings for the first pattern in the list that matches. Use first_answer and a handle-expression. Hints: Sample solution is 3 lines. *)
 
-fun first_match (v, ptns) =
+fun first_match v ptns =
   SOME( first_answer (fn (x) => match(v, x)) ptns ) handle NoAnswer => NONE

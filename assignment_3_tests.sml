@@ -59,5 +59,5 @@ val match_test6 = match (Const(1), ConstP(2)) = NONE
 val match_test7 = match (Constructor("x", Const(1)), ConstructorP("x", Variable("foo"))) = SOME([("foo", Const(1))])
 val match_test8 = match (Tuple([Const(1), Const(2)]), TupleP([Variable("foo"), Variable("bar")])) = SOME([("foo", Const(1)), ("bar", Const(2))])
 
-val first_match_test1 = first_match (Const(1), [UnitP]) = NONE
-val first_match_test2 = first_match (Const(1), [UnitP, Variable("foo"), Variable("bar")]) = SOME([("foo", Const(1))])
+val first_match_test1 = first_match (Const 1) [UnitP] = NONE
+val first_match_test2 = first_match (Const 1) [UnitP, Variable("foo"), Variable("bar")] = SOME([("foo", Const(1))])
