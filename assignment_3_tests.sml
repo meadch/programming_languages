@@ -36,19 +36,19 @@ val all_answers_test1 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [
 val all_answers_test2 = all_answers (fn x => if x = 1 then SOME [x] else NONE) [] = SOME []
 val all_answers_test3 = all_answers (fn x => if x > 1 then SOME [x] else NONE) [2,3,4] = SOME [2,3,4]
 
-val count_wildcards_test1a = count_wildcards Wildcard = 1
-val count_wildcards_test2a = count_wildcards (Variable "test") = 0
-val count_wildcards_test3a = count_wildcards (TupleP([Wildcard, ConstructorP("test", Wildcard)])) = 2
+val count_wildcards_test1 = count_wildcards Wildcard = 1
+val count_wildcards_test2 = count_wildcards (Variable "test") = 0
+val count_wildcards_test3 = count_wildcards (TupleP([Wildcard, ConstructorP("test", Wildcard)])) = 2
 
-val count_wild_and_variable_lengths_test1a = count_wild_and_variable_lengths (Variable "test") = 4
-val count_wild_and_variable_lengths_test2a = count_wild_and_variable_lengths (TupleP([Wildcard, ConstructorP("test", Variable("test"))])) = 5
+val count_wild_and_variable_lengths_test1 = count_wild_and_variable_lengths (Variable "test") = 4
+val count_wild_and_variable_lengths_test2 = count_wild_and_variable_lengths (TupleP([Wildcard, ConstructorP("test", Variable("test"))])) = 5
 
-val count_some_var_test1a = count_some_var ("toast", (Variable "test")) = 0
-val count_some_var_test2a = count_some_var ("toast", (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))]))) = 2
+val count_some_var_test1 = count_some_var ("toast", (Variable "test")) = 0
+val count_some_var_test2 = count_some_var ("toast", (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))]))) = 2
 
-val check_pat_test1a = check_pat Wildcard = true
-val check_pat_test2a = check_pat (Variable "test") = true
-val check_pat_test3a = check_pat (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))])) = false
+val check_pat_test1 = check_pat Wildcard = true
+val check_pat_test2 = check_pat (Variable "test") = true
+val check_pat_test3 = check_pat (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))])) = false
 
 (* 
 val test11 = match (Const(1), UnitP) = NONE
