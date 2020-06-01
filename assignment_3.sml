@@ -117,3 +117,15 @@ val check_pat =
     in
       no_repeats o variable_names
     end
+
+(* Write a function match that takes a valu * pattern and returns a (string * valu) list option, namely NONE if the pattern does not match and SOME lst where lst is the list of bindings if it does. Note that if the value matches but the pattern has no patterns of the form Variable s, then the result is SOME []. Hints: Sample solution has one case expression with 7 branches. The branch for tuples uses all_answers and ListPair.zip. Sample solution is 13 lines. Remember to look above for the rules for what patterns match what values, and what bindings they produce. These are hints: We are not requiring all_answers and ListPair.zip here, but they make it easier. *)
+
+fun match (v, ptn) =
+  case (v, ptn) of
+      (v, Variable s) => SOME([(s, v)])
+    | (_, Wildcard) => SOME([])
+    | (Unit, UnitP) => SOME([])
+    | (Const i, ConstP j) => if i = j then SOME([]) else NONE
+    | (Constructor(i, v), ConstructorP(j, p)) => if i = j then match(v, p) else NONE
+    | (Tuple(vals), TupleP(ptns)) => all_answers match (ListPair.zip(vals, ptns))
+    | _ => NONE

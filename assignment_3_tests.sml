@@ -50,7 +50,11 @@ val check_pat_test1 = check_pat Wildcard = true
 val check_pat_test2 = check_pat (Variable "test") = true
 val check_pat_test3 = check_pat (TupleP([Wildcard, Variable("toast"), ConstructorP("test", Variable("toast"))])) = false
 
-(* 
-val test11 = match (Const(1), UnitP) = NONE
-
-val test12 = first_match Unit [UnitP] = SOME [] *)
+val match_test1 = match (Const(1), UnitP) = NONE
+val match_test2 = match (Const(1), Variable("foo")) = SOME([("foo", Const(1))])
+val match_test3 = match (Const(1), Wildcard) = SOME([])
+val match_test4 = match (Unit, UnitP) = SOME([])
+val match_test5 = match (Const(1), ConstP(1)) = SOME([])
+val match_test6 = match (Const(1), ConstP(2)) = NONE
+val match_test7 = match (Constructor("x", Const(1)), ConstructorP("x", Variable("foo"))) = SOME([("foo", Const(1))])
+val match_test8 = match (Tuple([Const(1), Const(2)]), TupleP([Variable("foo"), Variable("bar")])) = SOME([("foo", Const(1)), ("bar", Const(2))])
