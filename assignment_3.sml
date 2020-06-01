@@ -94,5 +94,6 @@ fun g f1 f2 p =
 fun count_wildcards (p) = g (fn () => 1) (fn (x) => 0) p
     
 (* (b) Use g to define a function count_wild_and_variable_lengths that takes a pattern and returns the number of Wildcard patterns it contains plus the sum of the string lengths of all the variables in the variable patterns it contains. (Use String.size. We care only about variable names; the constructor names are not relevant.) *)
+fun count_wild_and_variable_lengths (p) = g (fn () => 1) String.size p
 
 (* (c) Use g to define a function count_some_var that takes a string and a pattern (as a pair) and returns the number of times the string appears as a variable in the pattern. We care only about variable names; the constructor names are not relevant. *)
